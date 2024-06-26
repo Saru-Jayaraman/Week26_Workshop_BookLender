@@ -35,10 +35,6 @@ public class Book {
         return author;
     }
 
-    public Person getBorrower() {
-        return borrower;
-    }
-
     public void setTitle(String title) {
         validateInput(title, "Title");
         this.title = title;
@@ -61,11 +57,11 @@ public class Book {
     }
 
     public String getBookInformation() {
-        String bookDetails = "BOOK ID: " + getId() + " TITLE: " + getTitle() + " AUTHOR: " + getAuthor() + " ---------is borrowed by--------- ";
+        String bookDetails = "BOOK ID: " + getId() + " TITLE: " + getTitle() + " AUTHOR: " + getAuthor();
         if (!available) {
-            bookDetails = bookDetails + borrower.getPersonInformation();
+            bookDetails = bookDetails + " ---------is borrowed by--------- " + borrower.getPersonInformation();
         } else {
-            bookDetails = bookDetails + "Not borrowed by anyone...";
+            bookDetails = bookDetails + " -------------------------------- " + "Not borrowed by anyone...";
         }
         return bookDetails;
     }

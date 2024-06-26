@@ -35,25 +35,28 @@ public class App {
         System.out.println("================");
         // Loan a book to the person
         personObj1.loanBook(bookObj1);
-        personObj1.loanBook(bookObj3);
         personObj1.loanBook(bookObj2);
+        personObj1.loanBook(bookObj3);
         personObj1.loanBook(bookObj4);
 
         // Display person information after borrowing a book
         // Display book information after borrowing a book
         displayBookPersonInformation(bookObj1);
-        displayBookPersonInformation(bookObj3);
         displayBookPersonInformation(bookObj2);
+        displayBookPersonInformation(bookObj3);
         displayBookPersonInformation(bookObj4);
         displayBookPersonInformation(bookObj5);
 
         System.out.println("AFTER RETURNING:");
         System.out.println("===============");
         // Return the borrowed book
+        personObj1.returnBook(bookObj2);
         personObj1.returnBook(bookObj1);
+
         // Display person information after returning the book
         // Display book information after borrowing a book
         displayBookPersonInformation(bookObj1);
+        displayBookPersonInformation(bookObj2);
     }
 
     public static void displayBookPersonInformation(Book bookObj) {

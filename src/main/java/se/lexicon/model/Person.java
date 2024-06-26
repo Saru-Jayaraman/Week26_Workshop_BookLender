@@ -59,25 +59,31 @@ public class Person {
     public void returnBook(Book book) {
         if(book == null)
             throw new IllegalArgumentException("Book details cannot be null...");
-        int i = 0;
-        int bookIndexToRemove = 0;
-        for(Book arr : booksOwned) {
-            if(arr == book) {
+        int bookIndexToRemove = -1;
+        for (int i = 0; i < booksOwned.length; i++) {
+            if (booksOwned[i].equals(book)) {
                 bookIndexToRemove = i;
                 break;
             }
-            i++;
         }
-        Book[] newBooksOwned = new Book[booksOwned.length-1];
-        if(bookIndexToRemove != 0) {
-            newBooksOwned = Arrays.copyOf(booksOwned, bookIndexToRemove-1);
-//            if (newBooksOwned.length - (bookIndexToRemove + 1) >= 0)
-                System.arraycopy(booksOwned, bookIndexToRemove + 1, newBooksOwned,
-                        bookIndexToRemove + 1 - 1, newBooksOwned.length - (bookIndexToRemove + 1));
+        if(bookIndexToRemove != -1) {
+            Book[] newBooksOwned = new Book[booksOwned.length-1];
+            for (int j = 0; j < bookIndexToRemove; j++) {
+                newBooksOwned[j] = booksOwned[j];
+            }
+            for(int j=bookIndexToRemove, k=bookIndexToRemove+1; j<booksOwned.length && k<=newBooksOwned.length; j++, k++) {
+                newBooksOwned[j] = booksOwned[k];
+            }
             booksOwned = newBooksOwned;
             book.setBorrower(null);
+            String bookReturnDetails;
+            for(int k=0; k<booksOwned.length; k++) {
+                bookReturnDetails = booksOwned[k].getBookInformation();
+                System.out.println(k + " " + bookReturnDetails);
+            }
+            System.out.println();
         } else {
-            System.out.println("Book not found in the Owned Book list...");
+            throw new IllegalArgumentException("Book not found...");
         }
     }
 

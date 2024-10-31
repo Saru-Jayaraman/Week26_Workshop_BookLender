@@ -1,7 +1,5 @@
-# OOP mini-project (Book Lender)
-
-
-1. The simplified class diagram is part of a much larger program is shown in Figure 1 should be implemented.  
+## OOP mini-project (Book Lender)
+The simplified class diagram is part of a much larger program is shown in Figure 1 should be implemented.  
 It is part of a book lender system where a person loans a book or more.  
 In this program, each person needs to know all books that he or she has on landed,  
 while each book only needs to know which person is currently having the book.  
